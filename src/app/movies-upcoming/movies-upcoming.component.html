@@ -1,0 +1,14 @@
+<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <div class="flex flex-wrap mx-auto justify-between">
+        <div *ngFor="let movie of moviesList?.results; let i=index" class="w-1/4 mb-4">
+            <!-- Modal toggle -->
+            <a type="button" [attr.data-modal-target]="'default-modal-' + i" [attr.data-modal-toggle]="'default-modal-' + i" class="mb-4 cursor-pointer">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" alt="{{movie.title}}">
+                <h1 class="text-1xl font-semibold mb-4">{{movie.title | uppercase}}</h1>
+                <p class="font-semibold mb-4">Date de sortie: {{movie.release_date | date:'d MMMM y'}}</p>
+            </a>      
+            <app-movie-modal [idMovie]="movie.id" [i]="i"></app-movie-modal>
+        </div>
+    </div>
+</div>
+
